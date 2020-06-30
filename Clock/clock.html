@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="clock.css">
+    <title>Clock</title>
+</head>
+<body>
+    <div class="ClockWrapper">
+        <div id="ClockDigits"><p></p></div>
+        <div id="ClockMeridian"><p></p></div>
+    </div>
+    
+</body>
+
+<script>
+    function tickTock(parentElementID, elementToAppend, elementContent) {
+            let childElement = document.createElement(elementToAppend);
+            childElement.innerHTML = elementContent;
+
+            return document.getElementById(parentElementID).firstChild.replaceWith(childElement);
+        }
+
+    function showClock() {
+        let time = new Date();
+
+        let hour = time.getHours(); // 0-23 format
+        let minute = time.getMinutes();// 0-59 min
+        let second = time.getSeconds(); //0-59 sec
+        let meridian = "AM"; //or PM
+
+        // convert to 12-hour format. Determine the meridian
+        if(hour > 12) {
+            hour = hour - 12;
+            meridian = "PM";
+        }
+
+        // add the 0 in front of single digits
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
+        if(minute < 10) {
+            minute = "0" + minute;
+        }
+        if(second < 10) {
+            second = "0" + second;
+        }
+
+        let current_time = hour + ":" + minute + ":" + second;
+
+        tickTock('ClockDigits', 'p', current_time)
+        tickTock('ClockMeridian', 'p', meridian);
+
+        //display in HTML
+        setTimeout(showClock, 1000);
+
+    }
+
+    //call the function to display the clock
+    showClock();
+</script>
+</html>

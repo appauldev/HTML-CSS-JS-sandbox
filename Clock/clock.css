@@ -1,0 +1,51 @@
+{
+    outline: 1px solid red;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background-color: rgb(35, 28, 39);
+
+    display: flex;
+    flex-direction: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.ClockWrapper {
+    width: auto;
+    height: auto;
+    padding: 5rem 2rem;
+    
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#ClockDigits, #ClockMeridian {
+    font-family: 'Fira Mono for Powerline'
+}
+
+#ClockDigits p, #ClockMeridian p {
+    margin: 0;
+    color: rgb(189, 148, 212);
+}
+
+#ClockDigits {
+    font-size: 3.5rem;
+    padding-right: 1rem;
+}
+
+#ClockMeridian {
+    font-size: 1.5rem;
+}

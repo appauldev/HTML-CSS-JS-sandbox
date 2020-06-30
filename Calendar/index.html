@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Calendar</title>
+</head>
+<body>
+    <div class="DateWrapper">
+        <div id="currMonth" class="DateContents"></div>
+        <div id="currDay" class="DateContents"></div>
+        <div id="currDayNum" class="DateContents"></div>
+        <div id="currYear" class="DateContents"></div>
+    </div>
+</body>
+
+<script>
+    function appendToElement(parentElementID, elementToAppend, elementContent) {
+        let childElement = document.createElement(elementToAppend);
+        childElement.innerHTML = elementContent;
+
+        return document.getElementById(parentElementID).appendChild(childElement);
+    }
+
+    function showCalendar() {
+        const lang = navigator.language;
+        let date = new Date();
+
+        let month = date.toLocaleString(lang, { month: 'long' });
+        let day = date.toLocaleString(lang, { weekday: 'long' });
+        let dayNum = date.getDate();
+        let year = date.getFullYear();
+
+        appendToElement('currMonth', 'p', month);
+        appendToElement('currDay', 'p', day);
+        appendToElement('currDayNum', 'p', dayNum);
+        appendToElement('currYear', 'p', year);
+
+    }
+
+    showCalendar();
+
+
+</script>
+</html>
